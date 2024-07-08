@@ -1,6 +1,7 @@
 package com.gracjan.gamestore.service;
 
 import com.gracjan.gamestore.entity.Game;
+import com.gracjan.gamestore.exception.GameNotFoundException;
 import com.gracjan.gamestore.repository.GameJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Game findById(long id) {
-        return gameRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found game with id: " + id));
+        return gameRepository.findById(id).orElseThrow(() -> new GameNotFoundException("Not found game with id: " + id));
     }
 
     @Override
