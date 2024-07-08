@@ -3,6 +3,8 @@ package com.gracjan.gamestore.service;
 import com.gracjan.gamestore.entity.Game;
 import com.gracjan.gamestore.exception.GameNotFoundException;
 import com.gracjan.gamestore.repository.GameJpaRepository;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,17 @@ public class GameServiceImpl implements GameService{
         long count = gameRepository.count();
         gameRepository.deleteAll();
         return "Deleted " + count + " games";
+    }
+
+    @PostConstruct
+    public void createInitialData(){
+        gameRepository.save(new Game("Minecraft", 5, "Sandbox", "PC", 10.99));
+        gameRepository.save(new Game("7 Days To Die", 7, "Zombie Apocalypse", "PlayStation 5", 12.34));
+    }
+
+    @PreDestroy
+    public void cleanup(){
+        gameRepository.deleteAll();
     }
 
 }
