@@ -52,7 +52,7 @@ public class GameDAO {
     }
 
     public int deleteAll(){
-        int numRowsDeleted = entityManager.createQuery("DELETE FROM Game", Game.class).executeUpdate();
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Game").executeUpdate();
         return numRowsDeleted;
     }
 }
