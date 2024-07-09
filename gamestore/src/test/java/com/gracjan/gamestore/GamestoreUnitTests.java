@@ -51,7 +51,7 @@ public class GamestoreUnitTests {
 
     @Test
     @Order(2)
-    public void test_findAll_shouldBeNotEmpty(){
+    public void test_findAll_shouldNotBeEmpty(){
         // arrange
         when(gameRepository.findAll()).thenReturn(games);
 
