@@ -1,31 +1,32 @@
-# Game Store management application
+# GAME STORE MANAGEMENT
 
-## Opis projektu
-GameStore management to prosta aplikacja REST. Łączy się ona z bazą danych **MySQL** i wykonuje na niej operacje. Utworzyłem dwa serwisy, z których jeden korzysta z **JpaRepository** do tworzenia prostych operacji **CRUD**. Drugi korzysta z **EntityManagera** który pozwala na bardziej dowolne operacje. Dodałem również **globalną obsługę wyjątków**, dzięki czemu po wykonaniu zapytań wyświetla się określony status serwera oraz komunikat. Dodałem również **testy jednostkowe** dla operacji findAll() i findById(long id).
+## DESCRIPTION
+GameStore management is a simple REST application. It connects to a **MySQL** database and performs operations on it. I have created two services, where one of them uses **JpaRepository** to perform basic **CRUD** operations. Second service uses **EntityManager** to allow for more custom operations. I have also added **global exception handling**, which shows specific server status and message after requests are completed. Additionally, I have added **unit tests** for findAll() and findById(long id) methods. Application also uses **Spring Security** to allow users with specific roles to use endpoints. For example: user with the EMPLOYEE role can perform GET operations to display games but can not perform DELETE operations.    
 
-### Endpointy dla metod korzystających z JpaRepository:
-| Metoda | Endpoint | Opis |
-|------- | -------- | ---- |
-| GET    | /api/games   | Wyświetla wszystkie gry |
-| GET    | /api/games/{id}   | Wyświetla grę o podanym id |
-| POST   | /api/games   | Tworzy nową grę na podstawie przekazanego obiektu |
-| PUT    | /api/games   | Aktualizuje grę na podstawie przekazanego obiektu |
-| DELETE | /api/games   | Usuwa wszystkie gry |
-| DELETE | /api/games{id}   | Usuwa grę o podanym id |
+### Endpoints for methods using JpaRepository:
+| Method | Endpoint | Description |
+|------- | -------- | ----------- |
+| GET    | /api/games   | Displays all games |
+| GET    | /api/games/{id}   | Displays the game with the given id |
+| POST   | /api/games   | Creates a new game based on the given object |
+| PUT    | /api/games   | Updates the game based on the given object |
+| DELETE | /api/games   | Deletes all games |
+| DELETE | /api/games{id}   | Deletes game with the given id |
 
-### Endpointy dla metod korzystających z EntityManagera:
-| Metoda | Endpoint | Opis |
-|------- | -------- | ---- |
-| GET    | /dao/games   | Wyświetla wszystkie gry |
-| GET    | /dao/games/platform/{platform}   | Wyświetla gry na podstawie podanej platformy |
-| GET    | /dao/games/{id}   | Wyświetla grę o podanym id |
-| POST   | /dao/games   | Tworzy nową grę na podstawie przekazanego obiektu |
-| PUT    | /dao/games   | Aktualizuje grę na podstawie przekazanego obiektu |
-| DELETE | /dao/games   | Usuwa wszystkie gry |
-| DELETE | /dao/games{id}   | Usuwa grę o podanym id |
+### Endpoints for methods using EntityManager:
+| Method | Endpoint | Description |
+|------- | -------- | ----------- |
+| GET    | /dao/games   | Displays all games |
+| GET    | /dao/games/platform/{platform}   | Displays all games based on the given platform |
+| GET    | /dao/games/{id}   | Displays the game with the given id |
+| POST   | /dao/games   | Creates a new game based on the given object |
+| PUT    | /dao/games   | Updates the game based on the given object |
+| DELETE | /dao/games   | Deletes all games |
+| DELETE | /dao/games{id}   | Deletes game with the given id |
 
-### Zależności:
+### Dependencies:
 - Spring Data JPA
 - MySQL Driver
 - Spring Boot DevTools
 - Spring Web
+- Spring Security
